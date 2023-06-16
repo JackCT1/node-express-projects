@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/new", (req, res) => {
-  res.send("users new form");
+  res.render("users/new");
 });
 
 router.post("/", (req, res) => {
