@@ -5,7 +5,9 @@ router.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-router.get("/:id", (req, res) => {});
+router.get("/:id", (req, res) => {
+  res.send(req.params.id);
+});
 
 router.post("/", (req, res) => {});
 
