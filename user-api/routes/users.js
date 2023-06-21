@@ -3,7 +3,7 @@ import express from "express";
 const router = express.Router();
 
 // get all users
-router.get("/users", (req, res) => {
+router.get("/", (req, res) => {
   res.send("Hello");
 });
 
