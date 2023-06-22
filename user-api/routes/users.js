@@ -21,6 +21,10 @@ router.get("/", (req, res) => {
 });
 
 // create a user
-router.post("/", (req, res) => {});
+router.post("/", (req, res) => {
+  const user = req.body;
+  user.push(user);
+  console.log(`User with username ${firstName}${lastName} added.`);
+});
 
 module.exports = router;
