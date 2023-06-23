@@ -31,5 +31,10 @@ router.post("/", (req, res) => {
 });
 
 // get one user
-router.get();
+router.get("/:id", (req, res) => {
+  const { id } = req.params.id;
+  const foundUser = users.find((user) => user.id == id);
+  res.send(foundUser);
+});
+
 module.exports = router;
