@@ -54,6 +54,8 @@ router.patch("/:id", (req, res) => {
   if (firstName) updatedUser.firstName = firstName;
   if (lastName) updatedUser.lastName = lastName;
   if (age) updatedUser.age = age;
+
+  res.send(`User with id ${id} has been updated.`);
 });
 
 module.exports = router;
