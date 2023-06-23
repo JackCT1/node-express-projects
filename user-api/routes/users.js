@@ -1,4 +1,5 @@
 const express = require("express");
+const uuid = require("uuid");
 
 const router = express.Router();
 
@@ -23,8 +24,12 @@ router.get("/", (req, res) => {
 // create a user
 router.post("/", (req, res) => {
   const user = req.body;
-  user.push(user);
+  const userId = uuid();
+  const userWithId = { ...user, id: userId };
+  user.push(userWithId);
   console.log(`User with username ${firstName}${lastName} added.`);
 });
 
+// get one user
+router.get();
 module.exports = router;
