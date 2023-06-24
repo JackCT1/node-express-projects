@@ -1,3 +1,19 @@
+const express = require("express");
+const uuid = require("uuid");
+
+let users = [
+  {
+    firstName: "John",
+    lastName: "Doe",
+    age: 25,
+  },
+  {
+    firstName: "Jane",
+    lastName: "Smith",
+    age: 30,
+  },
+];
+
 export const getAllUsers = (req, res) => {
   res.send(users);
 };

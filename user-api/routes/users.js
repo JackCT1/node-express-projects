@@ -1,61 +1,29 @@
 const express = require("express");
-const uuid = require("uuid");
+const userControllers = require("../controllers/users");
+
+import {
+  getAllUsers,
+  createUser,
+  getUser,
+  updateUser,
+  deleteUser,
+} from "../controllers/users";
 
 const router = express.Router();
 
-let users = [
-  {
-    firstName: "John",
-    lastName: "Doe",
-    age: 25,
-  },
-  {
-    firstName: "Jane",
-    lastName: "Smith",
-    age: 30,
-  },
-];
-
 // get all users
-router.get("/", (req, res) => {
-  res.send(users);
-});
+router.get("/", getAllUsers());
 
 // create a user
-router.post("/", (req, res) => {
-  const user = req.body;
-  const userId = uuid();
-  const userWithId = { ...user, id: userId };
-  user.push(userWithId);
-  console.log(`User with username ${firstName}${lastName} added.`);
-});
+router.post("/", createUser());
 
 // get one user
-router.get("/:id", (req, res) => {
-  const { id } = req.params.id;
-  const foundUser = users.find((user) => user.id == id);
-  res.send(foundUser);
-});
+router.get("/:id", getUser());
 
 // delete a user
-router.delete("/:id", (req, res) => {
-  const { id } = req.params.id;
-  const filteredUsers = users.filter((user) => user.id != id);
-  res.send(`user with id ${id} deleted.`);
-});
+router.delete("/:id", deleteUser());
 
 // update a user
-router.patch("/:id", (req, res) => {
-  const { id } = req.params.id;
-  const { firstName, lastName, age } = req.body;
-
-  const updatedUser = users.find((user) => user.id == id);
-
-  if (firstName) updatedUser.firstName = firstName;
-  if (lastName) updatedUser.lastName = lastName;
-  if (age) updatedUser.age = age;
-
-  res.send(`User with id ${id} has been updated.`);
-});
+router.patch("/:id", updateUser());
 
 module.exports = router;
