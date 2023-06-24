@@ -29,4 +29,8 @@ export const updateUser = (req, res) => {
   res.send(`User with id ${id} has been updated.`);
 };
 
-export const deleteUser = (req, res) => {};
+export const deleteUser = (req, res) => {
+  const { id } = req.params.id;
+  const filteredUsers = users.filter((user) => user.id != id);
+  res.send(`user with id ${id} deleted.`);
+};
