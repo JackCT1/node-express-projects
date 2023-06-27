@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const tasks = require("./routes/tasks");
+const { getAllTasks } = require("./controllers/tasks");
 
 const PORT = 3000;
 
@@ -9,9 +10,7 @@ const PORT = 3000;
 app.use(express.json());
 
 //routes
-app.get("/", (req, res) => {
-  res.send("Task Manager App");
-});
+app.get(getAllTasks);
 
 app.use("/api/v1/tasks", tasks);
 
