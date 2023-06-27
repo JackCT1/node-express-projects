@@ -1,7 +1,13 @@
 const express = require("express");
 const app = express();
 const tasks = require("./routes/tasks");
-const { getAllTasks } = require("./controllers/tasks");
+const {
+  getAllTasks,
+  createTask,
+  getTask,
+  updateTask,
+  deleteTask,
+} = require("./controllers/tasks");
 
 const PORT = 3000;
 
