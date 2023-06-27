@@ -1,12 +1,18 @@
 const express = require("express");
 const app = express();
-const routes = require("./routes/tasks");
+const tasks = require("./routes/tasks");
 
 const PORT = 3000;
+
+//middleware
+
+app.use(express.json());
 
 //routes
 app.get("/", (req, res) => {
   res.send("Task Manager App");
 });
+
+app.use("/api/v1/tasks", tasks);
 
 app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
