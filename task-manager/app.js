@@ -11,6 +11,7 @@ const {
 } = require("./controllers/tasks");
 
 const dataConnection = require("./db/connect");
+require("dotenv").config();
 
 const PORT = 3000;
 
@@ -25,7 +26,7 @@ app.use("/api/v1/tasks", tasks);
 
 const start = async () => {
   try {
-    await dataConnection();
+    await dataConnection(process.env.MONGO_URI);
     app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
   } catch (error) {
     console.log(error);
