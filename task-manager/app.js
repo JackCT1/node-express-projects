@@ -10,6 +10,8 @@ const {
   deleteTask,
 } = require("./controllers/tasks");
 
+const dataConnection = require("./db/connect");
+
 const PORT = 3000;
 
 //middleware
@@ -21,4 +23,13 @@ app.get(getAllTasks);
 
 app.use("/api/v1/tasks", tasks);
 
-app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
+const start = async () => {
+  try {
+    await dataConnection();
+    app.listen(PORT, console.log(`Server is listening on port ${PORT}`));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
