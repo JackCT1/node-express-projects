@@ -23,7 +23,7 @@ const getTask = async (req, res) => {
   try {
     const { id: taskID } = req.params;
     const task = await Task.findOne({ _id: taskID });
-    res.json({ id: req.params.id });
+    res.status(200).json({ task });
   } catch (error) {}
 };
 
